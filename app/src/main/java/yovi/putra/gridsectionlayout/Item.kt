@@ -2,8 +2,10 @@ package yovi.putra.gridsectionlayout
 
 class Item (
     var title: String?,
-    var type: Int = 0
+    var type: Int = VIEW_TYPE_ITEM
 ) {
-    val VIEW_TYPE_ITEM = 0
-    val VIEW_TYPE_HEADER = 1
+    companion object {
+        const val VIEW_TYPE_ITEM = 0
+        const val VIEW_TYPE_HEADER = 1
+    }
 }

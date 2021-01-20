@@ -7,5 +7,6 @@ class Item (
     companion object {
         const val VIEW_TYPE_ITEM = 0
         const val VIEW_TYPE_HEADER = 1
+        const val VIEW_TYPE_LIST = 2
     }
 }

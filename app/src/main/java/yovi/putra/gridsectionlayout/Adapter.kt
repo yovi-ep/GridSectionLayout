@@ -8,13 +8,18 @@ class Adapter : RecyclerView.Adapter<BaseVHolder<Item>>() {
     private val item = mutableListOf<Item>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseVHolder<Item> {
+        val inflater = LayoutInflater.from(parent.context)
         return if (viewType == Item.VIEW_TYPE_HEADER) {
             HeaderVHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.header, parent, false)
+                inflater.inflate(R.layout.header, parent, false)
+            )
+        } else if (viewType == Item.VIEW_TYPE_ITEM) {
+            ItemVHolder(
+                inflater.inflate(R.layout.item, parent, false)
             )
         } else {
-            ItemVHolder(
-                LayoutInflater.from(parent.context).inflate(R.layout.item, parent, false)
+            ListVHolder(
+                inflater.inflate(R.layout.list, parent, false)
             )
         }
     }

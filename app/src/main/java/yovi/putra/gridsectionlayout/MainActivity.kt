@@ -14,13 +14,14 @@ class MainActivity : AppCompatActivity() {
 
 
         val itemAdapter = Adapter()
-        val layout = GridLayoutManager(this, 4)
+        //val layout = GridLayoutManager(this, 4)
+        val layout = LinearLayoutManager(this)
         recyclerview.apply {
             layoutManager = layout
             adapter = itemAdapter
         }
 
-        layout.spanSizeLookup = AdapterSpanDynamic(itemAdapter, layout.spanCount)
+        //layout.spanSizeLookup = AdapterSpanDynamic(itemAdapter, layout.spanCount)
 
         itemAdapter.apply {
             setItem(Item("Header 1", Item.VIEW_TYPE_HEADER))
@@ -33,6 +34,8 @@ class MainActivity : AppCompatActivity() {
             setItem(addItem(10))
             setItem(Item("Header 5", Item.VIEW_TYPE_HEADER))
             setItem(addItem(6))
+            setItem(Item("List", Item.VIEW_TYPE_HEADER))
+            setItem(addListItem(6))
         }
     }
 
@@ -40,6 +43,14 @@ class MainActivity : AppCompatActivity() {
         val item = mutableListOf<Item>()
         for (i in 0..count) {
             item.add(Item("", Item.VIEW_TYPE_ITEM))
+        }
+        return item
+    }
+
+    private fun addListItem(count: Int) : MutableList<Item> {
+        val item = mutableListOf<Item>()
+        for (i in 0..count) {
+            item.add(Item("$count", Item.VIEW_TYPE_LIST))
         }
         return item
     }
